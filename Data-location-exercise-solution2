@@ -1,0 +1,30 @@
+pragma solidity 0.5.1;
+
+// Create a contract that can storage users and get user's balance information
+
+contract memoryandstorage {
+
+// Create a mapping to structure the database and create a dictionary of the list of people 
+
+   mapping (uint => User) users;
+   
+   struct User {
+       uint id;
+       uint balance;
+   }
+
+// Create a function that adds a user to the list
+    function addUser (uint id, uint balance) public {
+        users[id] = User(id, balance);
+    }
+   
+// Create a function that can update user's balance information but call the id and balance in 1 single line and give you a new balance
+    function updateBalance(uint id, uint balance) public {
+        users[id].balance = balance;
+    }
+
+// Create a function that can get user's balance information 
+    function getBalance (uint id) view public returns (uint) {
+        return users[id].balance;
+    }
+}
